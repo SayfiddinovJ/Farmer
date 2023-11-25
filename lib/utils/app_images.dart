@@ -4,4 +4,10 @@ class AppImages {
   static const String floriculture = 'assets/images/floriculture.png';
   static const String hotRoom = 'assets/images/hot_room.png';
   static const String poultry = 'assets/images/poultry.png';
+  static const String anjir = 'assets/images/anjir.png';
+  static const String behi = 'assets/images/behi.png';
+  static const String giloz = 'assets/images/giloz.png';
+  static const String malina = 'assets/images/malina.png';
+  static const String nok = 'assets/images/nok.png';
+  static const String shaftoli = 'assets/images/shaftoli.png';
 }

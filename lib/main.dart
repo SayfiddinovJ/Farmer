@@ -1,3 +1,4 @@
+import 'package:farmer/cubit/category_cubit.dart';
 import 'package:farmer/cubit/tabs_box_cubit.dart';
 import 'package:farmer/ui/tabs_box.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,17 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TabsBoxCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => TabsBoxCubit(),
+          child: const MyApp(),
+        ),
+        BlocProvider(
+          create: (context) => CategoryCubit(),
+          child: const MyApp(),
+        ),
+      ],
       child: const MyApp(),
     );
   }

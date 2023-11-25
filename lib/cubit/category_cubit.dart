@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class TabsBoxCubit extends Cubit<int> {
-  TabsBoxCubit() : super(0);
+class CategoryCubit extends Cubit<int> {
+  CategoryCubit() : super(0);
 
   changeIndex(int index) => emit(index);
 }
