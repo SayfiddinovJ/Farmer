@@ -79,36 +79,36 @@ class SaleScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.r),
                     ),
-                    child: Stack(
-                      children: [
-                        Image.asset(
-                          images[index],
-                          fit: BoxFit.fill,
-                        ),
-                        Positioned(
-                          right: 6,
-                          left: 6,
-                          bottom: 24,
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 13.w, vertical: 2.h),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5.r),
-                              color: const Color(0xFFA0BB97),
-                            ),
-                            child: Center(
-                              child: Text(
-                                texts[index],
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 13.sp,
-                                ),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 10.w,
+                        vertical: 8.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(13.r),
+                      ),
+                      child: Column(
+                        children: [
+                          Center(
+                            child: Text(
+                              texts[index],
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w800,
+                                fontSize: 15.sp,
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          SizedBox(height: 4.h),
+                          Expanded(
+                            child: Image.asset(
+                              images[index],
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
