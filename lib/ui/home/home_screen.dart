@@ -1,6 +1,7 @@
 import 'package:farmer/ui/profile/profile_screen.dart';
 import 'package:farmer/ui/widgets/global_text_field.dart';
 import 'package:farmer/ui/widgets/weather_container.dart';
+import 'package:farmer/ui/widgets/zoom_tap_button.dart';
 import 'package:farmer/utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -75,40 +76,43 @@ class HomeScreen extends StatelessWidget {
               ),
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
-                    child: Stack(
-                      children: [
-                        Image.asset(
-                          images[index],
-                          fit: BoxFit.fill,
-                        ),
-                        Positioned(
-                          right: 6,
-                          left: 6,
-                          bottom: 24,
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 13.w, vertical: 2.h),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5.r),
-                              color: const Color(0xFFA0BB97),
-                            ),
-                            child: Center(
-                              child: Text(
-                                texts[index],
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 13.sp,
+                  return ZoomTapButton(
+                    onTap: () {},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.r),
+                      ),
+                      child: Stack(
+                        children: [
+                          Image.asset(
+                            images[index],
+                            fit: BoxFit.fill,
+                          ),
+                          Positioned(
+                            right: 6,
+                            left: 6,
+                            bottom: 24,
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 13.w, vertical: 2.h),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.r),
+                                color: const Color(0xFFA0BB97),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  texts[index],
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 13.sp,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },

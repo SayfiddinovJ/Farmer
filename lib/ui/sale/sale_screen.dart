@@ -1,5 +1,6 @@
 import 'package:farmer/ui/widgets/categories_container.dart';
 import 'package:farmer/ui/widgets/global_text_field.dart';
+import 'package:farmer/ui/widgets/zoom_tap_button.dart';
 import 'package:farmer/utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -75,39 +76,42 @@ class SaleScreen extends StatelessWidget {
               ),
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.r),
-                    ),
+                  return ZoomTapButton(
+                    onTap: () {},
                     child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 10.w,
-                        vertical: 8.h,
-                      ),
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(13.r),
+                        borderRadius: BorderRadius.circular(10.r),
                       ),
-                      child: Column(
-                        children: [
-                          Center(
-                            child: Text(
-                              texts[index],
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w800,
-                                fontSize: 15.sp,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10.w,
+                          vertical: 8.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(13.r),
+                        ),
+                        child: Column(
+                          children: [
+                            Center(
+                              child: Text(
+                                texts[index],
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 15.sp,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 4.h),
-                          Expanded(
-                            child: Image.asset(
-                              images[index],
-                              fit: BoxFit.fill,
+                            SizedBox(height: 4.h),
+                            Expanded(
+                              child: Image.asset(
+                                images[index],
+                                fit: BoxFit.fill,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );
