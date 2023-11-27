@@ -5,14 +5,21 @@ import 'package:farmer/ui/widgets/zoom_tap_button.dart';
 import 'package:farmer/utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  ImagePicker picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF2AAA8A),
         title: const Text('Dehqonchasiga'),
@@ -30,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               );
             },
-            icon: const Icon(Icons.settings),
+            icon: const Icon(Icons.account_circle),
           ),
         ],
         elevation: 0,
@@ -50,11 +57,16 @@ class HomeScreen extends StatelessWidget {
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: GlobalTextField(
                 hintText: 'Search',
-                suffixIcon: Icon(Icons.camera_alt),
-                prefixIcon: Icon(Icons.search),
+                suffixIcon: IconButton(
+                  onPressed: () async {
+                    await _getFromCamera();
+                  },
+                  icon: const Icon(Icons.camera_alt),
+                ),
+                prefixIcon: const Icon(Icons.search),
               ),
             ),
             SliverToBoxAdapter(child: SizedBox(height: 10.h)),
@@ -123,7 +135,22 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        onPressed: () async {
+          await _getFromCamera();
+        },
+        child: const Icon(
+          Icons.camera_alt_outlined,
+          color: Colors.black,
+        ),
+      ),
     );
+  }
+
+  Future<void> _getFromCamera() async {
+    XFile? xFile = await picker.pickImage(source: ImageSource.camera);
+    if (xFile != null) {}
   }
 }
 

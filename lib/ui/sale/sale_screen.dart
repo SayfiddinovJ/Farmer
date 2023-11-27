@@ -4,14 +4,21 @@ import 'package:farmer/ui/widgets/zoom_tap_button.dart';
 import 'package:farmer/utils/app_images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
-class SaleScreen extends StatelessWidget {
+class SaleScreen extends StatefulWidget {
   const SaleScreen({super.key});
+
+  @override
+  State<SaleScreen> createState() => _SaleScreenState();
+}
+
+class _SaleScreenState extends State<SaleScreen> {
+  ImagePicker picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF2AAA8A),
         title: const Text('Dehqonchasiga'),

@@ -2,14 +2,21 @@ import 'package:farmer/ui/widgets/chat_container.dart';
 import 'package:farmer/ui/widgets/global_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
+
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  ImagePicker picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
       appBar: AppBar(
         backgroundColor: const Color(0xFF2AAA8A),
         title: const Text('Dehqonchasiga'),
@@ -35,11 +42,16 @@ class ChatScreen extends StatelessWidget {
           slivers: [
             SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              sliver: const SliverToBoxAdapter(
+              sliver: SliverToBoxAdapter(
                 child: GlobalTextField(
                   hintText: 'Search',
-                  suffixIcon: Icon(Icons.camera_alt),
-                  prefixIcon: Icon(Icons.search),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      _getFromCamera();
+                    },
+                    icon: const Icon(Icons.camera_alt),
+                  ),
+                  prefixIcon: const Icon(Icons.search),
                 ),
               ),
             ),
@@ -94,5 +106,10 @@ class ChatScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _getFromCamera() async {
+    XFile? xFile = await picker.pickImage(source: ImageSource.camera);
+    if (xFile != null) {}
   }
 }
